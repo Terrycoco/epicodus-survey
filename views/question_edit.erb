@@ -1,0 +1,36 @@
+<h1><%= @question.question %></h1>
+
+
+
+<form id="response_edit" action="/" method="post">
+
+  <%if @question.responses.any? %>
+  <h2>Here are your responses</h2>
+
+  <select name="response_id" id="response_id" size ="<%= @question.responses.length %>">
+    <% @question.responses.each do |resp| %>
+    <option value="<%= resp.id %>"><%= resp.response %></option>
+    <% end %>
+  </select>
+
+  <br>
+  <button type="submit" formaction="/surveys/<%= @survey.id %>/questions/<%= @question.id %>/response/delete" >Delete Response</button>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <% else %>
+
+  <h2>You have no responses yet!</h2>
+
+  <% end %>
+
+  <h2>Add a response:</h2>
+  <br>
+  <br>
+  <label for="response">New response</label>
+  <input type="text" name="response">
+  <button type="submit" formaction >Add Response</button>
+</form>

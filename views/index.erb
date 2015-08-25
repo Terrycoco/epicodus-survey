@@ -1,0 +1,20 @@
+
+
+<h1>Available Surveys</h1>
+
+<% @surveys.each do |survey| %>
+<ulclass="list-group">
+  <li class="list-group-item"><a href="/surveys/<%= survey.id %>/edit"><%= survey.title %></a></li>
+</ul>
+
+<% end %>
+
+<form role="form" id="form_id" action="/surveys/new" method="post">
+  <label for="title">Survey Title:</label>
+  <input type="text" name="title" >
+  <button type="btn btn-primary" name="button">Add New Survey</button>
+</form>
+
+<p>
+  <%= @errmsg %>
+</p>

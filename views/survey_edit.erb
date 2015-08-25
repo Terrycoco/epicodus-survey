@@ -1,0 +1,37 @@
+<h1><%= @survey.title() %></h1>
+
+<h2>Survey Questions:</h2>
+
+
+
+<form id="question_id" method="post">
+<select name="question_id" id="question_id" size ="<%= @survey.questions.length %>">
+  <% @survey.questions.each do |q| %>
+  <option value="<%= q.id %>"><%= q.question %></option>
+  <% end %>
+</select>
+
+<br>
+<button type="submit" formaction="/surveys/<%= @survey.id %>/questions/delete">Delete Question</button>
+
+</form>
+
+<form id="form_id" action="/surveys/<%= @survey.id %>/questions/new" method="post">
+  <label for="question">New Question:</label>
+  <input type="text" name="question" >
+  <button type="submit" name="button">Add New Question</button>
+
+</form>
+
+
+<!-- <ol>
+  <% @survey.questions.each do |q|%>
+  <li><a href="/surveys/<%= @survey.id %>/questions/<%= q.id %>/edit"><%= q.question %></a></li>
+  <% end %>
+</ol>
+
+
+
+
+
+<p><%= @errmsg%></p> -->
